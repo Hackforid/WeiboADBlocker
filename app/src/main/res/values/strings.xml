@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WeiboADBlocker</string>
+
+    <string name="desc">作为一名非Weibo重度用户，为了偶尔能安稳的使用下Sina Weibo，还特意跑去开了个会员，然后发现神TM的还有广告！！！\n实在是不能忍，为了能更好的互相伤害，开发了这个小插件来帮助盆友们去除Weibo时间线里的广告，包括Banner和各种推广。顺便修复了下时间流的排序问题，去掉各种热门。</string>
+</resources>
