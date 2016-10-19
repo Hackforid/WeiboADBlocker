@@ -31,7 +31,6 @@ class FuckWeibo {
 
         findAndHookMethod(DESC_CLASS, lpparam.classLoader, "setStatuses", List::class.java, object : XC_MethodHook() {
             override fun beforeHookedMethod(param: MethodHookParam) {
-                XposedBridge.log("setStatuses")
                 val statuses = param.args[0] as ArrayList<Any?>
 
                 val iterator = statuses.iterator()
@@ -54,8 +53,6 @@ class FuckWeibo {
         findAndHookMethod(DESC_CLASS, lpparam.classLoader, "getStatuses", object : XC_MethodHook() {
             override fun afterHookedMethod(param: MethodHookParam) {
                 val statuses = param.result as ArrayList<Any?>
-
-                XposedBridge.log("getStatuses: size=" + statuses.size)
 
                 if (statuses.equals(mLastStatus)) {
                     return
