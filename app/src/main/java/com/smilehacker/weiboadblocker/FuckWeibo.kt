@@ -6,6 +6,7 @@ import de.robv.android.xposed.XposedHelpers
 import de.robv.android.xposed.XposedHelpers.findAndHookMethod
 import de.robv.android.xposed.callbacks.XC_LoadPackage
 import java.net.URL
+import java.text.SimpleDateFormat
 import java.util.*
 
 /**
@@ -20,6 +21,8 @@ class FuckWeibo {
     private var mLastStatus : ArrayList<Any?>? = null
 
     private val BLOCK_HOST_LIST = arrayOf("sdkapp.mobile.sina.cn", "adashx.m.taobao.com", "adashbc.m.taobao.com")
+
+    var formatter = SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy")
 
 
     fun fuckWeibo(lpparam: XC_LoadPackage.LoadPackageParam) {
@@ -90,4 +93,11 @@ class FuckWeibo {
             }
         })
     }
+
+    private fun sortStatusByDate(statuses: ArrayList<Any?>) {
+        val sorted = statuses.sortedBy { formatter.parse(XposedHelpers.getObjectField(it, "created_at") as String).time}.reversed()
+        statuses.clear()
+        statuses.addAll(sorted)
+    }
+
 }

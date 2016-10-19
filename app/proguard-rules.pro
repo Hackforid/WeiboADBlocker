@@ -16,4 +16,4 @@
 #   public *;
 #}
 
--keep class com.smilehacker.weiboadblocker.Main
+-keepnames class com.smilehacker.weiboadblocker.Main

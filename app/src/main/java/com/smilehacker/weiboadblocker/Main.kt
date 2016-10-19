@@ -16,15 +16,15 @@ class Main: IXposedHookLoadPackage {
         }
         XposedBridge.log("try f**k sina weibo ${lpparam?.packageName}")
 
-        try {
-            if (BuildConfig.DEBUG) {
+        if (!BuildConfig.DEBUG) {
+            hook(lpparam)
+        } else {
+            try {
                 XposedBridge.log("run in hot loader")
                 runInDebugHotloader(lpparam)
-            } else {
-                hook(lpparam)
+            } catch (e: Throwable) {
+                XposedBridge.log(e)
             }
-        } catch (e: Throwable) {
-            XposedBridge.log(e)
         }
     }
 
