@@ -26,25 +26,6 @@ class FuckWeibo {
 
         XposedBridge.log("weiboADblocker version 3")
 
-//        findAndHookMethod(DESC_CLASS, lpparam.classLoader, "getTrends", object : XC_MethodHook() {
-//            override fun beforeHookedMethod(param: MethodHookParam?) {
-//                XposedBridge.log("getTrends")
-//                param?.result = Collections.EMPTY_LIST
-//            }
-//        })
-//        findAndHookMethod(DESC_CLASS, lpparam.classLoader, "setTrends", List::class.java, object : XC_MethodHook() {
-//            override fun beforeHookedMethod(param: MethodHookParam?) {
-//                XposedBridge.log("setTrends")
-//                param?.result = null
-//            }
-//        })
-//        findAndHookMethod(DESC_CLASS, lpparam.classLoader, "insetTrend", object : XC_MethodHook() {
-//            override fun beforeHookedMethod(param: MethodHookParam?) {
-//                XposedBridge.log("insetTrends")
-//                param?.result = Collections.EMPTY_LIST
-//            }
-//        })
-
         findAndHookMethod(DESC_CLASS, lpparam.classLoader, "setStatuses", List::class.java, object : XC_MethodHook() {
             override fun beforeHookedMethod(param: MethodHookParam) {
                 XposedBridge.log("setStatuses")
