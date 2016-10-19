@@ -19,18 +19,14 @@ class Main: IXposedHookLoadPackage {
         if (!BuildConfig.DEBUG) {
             hook(lpparam)
         } else {
-            try {
-                XposedBridge.log("run in hot loader")
-                runInDebugHotloader(lpparam)
-            } catch (e: Throwable) {
-                XposedBridge.log(e)
-            }
+            XposedBridge.log("run in hot loader")
+            runInDebugHotloader(lpparam)
         }
     }
 
     fun runInDebugHotloader(lpparam: XC_LoadPackage.LoadPackageParam) {
 
-        val packageName = Main::class.java.`package`.name
+        val packageName = Main::class.java.getPackage().name
         var filePath = "/data/app/$packageName-1/base.apk"
         if (!File(filePath).exists()) {
             filePath = "/data/app/$packageName-2/base.apk"
