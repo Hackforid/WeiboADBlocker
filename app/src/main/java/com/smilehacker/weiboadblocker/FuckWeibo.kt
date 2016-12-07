@@ -21,7 +21,8 @@ class FuckWeibo {
 
     private val BLOCK_HOST_LIST = arrayOf("sdkapp.mobile.sina.cn", "adashx.m.taobao.com", "adashbc.m.taobao.com",
             "api.weibo.cn/2/suggestions",
-            "api.weibo.cn/2/statues/longtext_show_batch"
+            "api.weibo.cn/2/statues/longtext_show_batch",
+            "wbapp.mobile.sina.cn/wbapplua/wbpullad.lua"
             )
 
     var formatter = SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy")

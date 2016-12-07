@@ -14,12 +14,12 @@ class Main: IXposedHookLoadPackage {
         if (lpparam!!.packageName!!.indexOf("com.sina.weibo") < 0) {
             return
         }
-        XposedBridge.log("try f**k sina weibo ${lpparam?.packageName}")
+        xlog { "try f**k sina ${lpparam?.packageName}" }
 
         if (!BuildConfig.DEBUG) {
             hook(lpparam)
         } else {
-            XposedBridge.log("run in hot loader")
+            xlog { "run in hot loader" }
             runInDebugHotloader(lpparam)
         }
     }
